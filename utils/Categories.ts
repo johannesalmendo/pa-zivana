@@ -1,5 +1,10 @@
-import { AiFillPhone, AiOutlineDesktop, AiOutlineLaptop } from "react-icons/ai";
-import { MdOutlineKeyboard, MdStorefront, MdTv, MdWatch } from "react-icons/md";
+import { GiVacuumCleaner } from "react-icons/gi";
+import { MdStorefront } from "react-icons/md";
+import { RiKnifeLine } from "react-icons/ri";
+import { AiFillSound } from "react-icons/ai";
+import { AiTwotoneThunderbolt } from "react-icons/ai";
+import { FcClock } from "react-icons/fc";
+import { TbBedFilled } from "react-icons/tb";
 
 export const categories = [
   {
@@ -7,27 +12,27 @@ export const categories = [
     icon: MdStorefront,
   },
   {
-    label: "Phone",
-    icon: AiFillPhone,
+    label: "Alat Kamar Tidur",
+    icon: TbBedFilled,
   },
   {
-    label: "Laptop",
-    icon: AiOutlineLaptop,
+    label: "Alat Pembersih",
+    icon: GiVacuumCleaner,
   },
   {
-    label: "Desktop",
-    icon: AiOutlineDesktop,
+    label: "Alat Elektronik",
+    icon: AiTwotoneThunderbolt,
   },
   {
-    label: "Watch",
-    icon: MdWatch,
+    label: "Jam",
+    icon: FcClock,
   },
   {
-    label: "Tv",
-    icon: MdTv,
+    label: "Speaker",
+    icon: AiFillSound,
   },
   {
-    label: "Accesories",
-    icon: MdOutlineKeyboard,
+    label: "Peralatan Dapur",
+    icon: RiKnifeLine,
   },
 ];

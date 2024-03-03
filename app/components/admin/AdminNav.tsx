@@ -20,28 +20,28 @@ const AdminNav = () => {
         <div className="flex flex-row items-center justify-between md:justify-center gap-8 md:gap-12 overflow-x-auto flex-nowrap">
           <Link href="/admin">
             <AdminNavItem
-              label="Summary"
+              label="Beranda"
               icon={MdDashboard}
               selected={pathname === "/admin"}
             />
           </Link>
           <Link href="/admin/add-products">
             <AdminNavItem
-              label="AddProducts"
+              label="Tambah Produk"
               icon={MdLibraryAdd}
               selected={pathname === "/admin/add-products"}
             />
           </Link>
           <Link href="/admin/manage-products">
             <AdminNavItem
-              label="ManageProducts"
+              label="Kelola Produk"
               icon={MdDns}
               selected={pathname === "/admin/manage-products"}
             />
           </Link>
           <Link href="/admin/manage-orders">
             <AdminNavItem
-              label="ManageOrders"
+              label="Kelola Orderan"
               icon={MdFormatListBulleted}
               selected={pathname === "/admin/manage-orders"}
             />

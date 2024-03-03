@@ -89,7 +89,7 @@ const AddProductForm = () => {
     }
 
     const handleImageUploads = async () => {
-      toast("Creating product, please wait..");
+      toast("Menambah Produk, proses...");
       try {
         for (const item of data.images) {
           if (item.image) {
@@ -197,10 +197,10 @@ const AddProductForm = () => {
 
   return (
     <>
-      <Heading title="Add a Product" center />
+      <Heading title="Tambahkan Produk" center />
       <Input
         id="name"
-        label="Name"
+        label="Nama"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -208,7 +208,7 @@ const AddProductForm = () => {
       />
       <Input
         id="price"
-        label="Price"
+        label="Harga"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -217,7 +217,7 @@ const AddProductForm = () => {
       />
       <Input
         id="brand"
-        label="Brand"
+        label="Merek"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -225,7 +225,7 @@ const AddProductForm = () => {
       />
       <TextArea
         id="description"
-        label="Description"
+        label="Keterangan"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -234,10 +234,10 @@ const AddProductForm = () => {
       <CustomCheckBox
         id="inStock"
         register={register}
-        label="This product is in stock"
+        label="Produk ini Tersedia"
       />
       <div className="w-full font-medium">
-        <div className="mb-2 font-semibold">Select a Category</div>
+        <div className="mb-2 font-semibold">Pilih Kategori</div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h[50vh] overflow-y-auto">
           {categories.map((item) => {
             if (item.label === "All") {
@@ -260,11 +260,10 @@ const AddProductForm = () => {
       <div className="w-full flex flex-col flex-wrap gap-4">
         <div>
           <div className="font-bold">
-            Select the available product colors and upload their images.
+            Pilih warna produk yang tersedia dan unggah gambarnya.
           </div>
           <div className="text-sm">
-            You must upload an image for each of the color selected otherwise
-            your color selection will be ignored.
+            Mengunggah gambar untuk setiap warna yang dipilih
           </div>
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -282,7 +281,7 @@ const AddProductForm = () => {
         </div>
       </div>
       <Button
-        label={isLoading ? "Loading..." : "Add Product"}
+        label={isLoading ? "Memuat..." : "Tambah Produk"}
         onClick={handleSubmit(onSubmit)}
       />
     </>

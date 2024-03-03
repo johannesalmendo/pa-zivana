@@ -40,7 +40,7 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
 
   return (
     <div>
-      <Heading title="Shopping Cart" center />
+      <Heading title="Keranjang Belanja" center />
       <div
         className="grid
       grid-cols-5
@@ -51,9 +51,9 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
       mt-8
       "
       >
-        <div className="col-span-2 justify-self-start">PRODUCT</div>
-        <div className="justify-self-center">PRICE</div>
-        <div className="justify-self-center">QUANTITY</div>
+        <div className="col-span-2 justify-self-start">PRODUk</div>
+        <div className="justify-self-center">HARGA</div>
+        <div className="justify-self-center">JUMLAH</div>
         <div className="justify-self-end">TOTAL</div>
       </div>
       <div>
@@ -65,7 +65,7 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
       <div className="border-t-[1.5px] border-slate-200 py-4 flex justify-between gap-4">
         <div className="w-[90px]">
           <Button
-            label="Clear Cart"
+            label="Bersihkan keranjang"
             onClick={() => {
               handleClearCart();
             }}
@@ -79,10 +79,10 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
             <span>{formatPrice(cartTotalAmount)}</span>
           </div>
           <p className="text-slate-500">
-            Taxes and shipping calculate at checkout
+            Pajak dan ongkos kirim dihitung saat checkout
           </p>
           <Button
-            label={currentUser ? "Checkout" : "Login To Checkout"}
+            label={currentUser ? "Pembayaran" : "Login untuk Pembayaran"}
             outline={currentUser ? false : true}
             onClick={() => {
               currentUser ? router.push("/checkout") : router.push("/login");
@@ -96,7 +96,7 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
           "
           >
             <MdArrowBack />
-            <span>Continue Shopping</span>
+            <span>Lanjut Belanja</span>
           </Link>
         </div>
       </div>

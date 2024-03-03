@@ -23,7 +23,7 @@ const BarGraph:React.FC<BarGraphProps> = ({data}) => {
         labels: labels,
         datasets: [
             {
-                label: 'Sale Amount',
+                label: 'Jumlah Penjualan',
                 data: amounts,
                 backgroundColor:'rgba(75, 192, 192, 0.6)',
                 borderColor: 'rgba(75, 192, 192, 1)',

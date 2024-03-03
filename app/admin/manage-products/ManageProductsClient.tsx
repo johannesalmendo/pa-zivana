@@ -47,10 +47,10 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 220 },
-    { field: "name", headerName: "Name", width: 220 },
+    { field: "name", headerName: "Nama", width: 220 },
     {
       field: "price",
-      headerName: "Price(USD)",
+      headerName: "Harga(Rp)",
       width: 100,
       renderCell: (params) => {
         return (
@@ -58,25 +58,25 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
         );
       },
     },
-    { field: "category", headerName: "Category", width: 100 },
-    { field: "brand", headerName: "Brand", width: 100 },
+    { field: "category", headerName: "Kategori", width: 100 },
+    { field: "brand", headerName: "Merek", width: 100 },
     {
       field: "inStock",
-      headerName: "inStock",
+      headerName: "Stok",
       width: 120,
       renderCell: (params) => {
         return (
           <div>
             {params.row.inStock === true ? (
               <Status
-                text="in stock"
+                text="stok tersedia"
                 icon={MdDone}
                 bg="bg-teal-200"
                 color="text-teal-700"
               />
             ) : (
               <Status
-                text="out of stock"
+                text="stok kosong"
                 icon={MdClose}
                 bg="bg-rose-200"
                 color="text-rose-700"
@@ -88,7 +88,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
     },
     {
       field: "action",
-      headerName: "Actions",
+      headerName: "Aksi",
       width: 200,
       renderCell: (params) => {
         return (
@@ -124,17 +124,17 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
         inStock: !inStock,
       })
       .then((res) => {
-        toast.success("Product status changed");
+        toast.success("Status produk berubah");
         router.refresh();
       })
       .catch((err) => {
-        toast.error("Oops! Something went wrong");
+        toast.error("Oops! ada sesuatu masalah");
         console.log(err);
       });
   }, []);
 
   const handleDelete = useCallback(async (id: string, images: any[]) => {
-    toast("Deleting product, please wait!");
+    toast("Menghapus produk, proses!");
 
     const handleImageDelete = async () => {
       try {
@@ -142,11 +142,11 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
           if (item.image) {
             const imageRef = ref(storage, item.image);
             await deleteObject(imageRef);
-            console.log("image deleted", item.image);
+            console.log("Menghapus Gambar", item.image);
           }
         }
       } catch (error) {
-        return console.log("Deleting images error", error);
+        return console.log("Gagal Menghapus Gambar", error);
       }
     };
 
@@ -155,11 +155,11 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
     axios
       .delete(`/api/product/${id}`)
       .then((res) => {
-        toast.success("Product deleted");
+        toast.success("Produk Berhasil Dihapus");
         router.refresh();
       })
       .catch((err) => {
-        toast.error("Failed to delete product");
+        toast.error("Gagal Menghapus Produk");
         console.log(err);
       });
   }, []);
@@ -167,7 +167,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
   return (
     <div className="max-w-[1150px] m-auto text-xl">
       <div className="mb-4 mt-8">
-        <Heading title="Manage Products" center />
+        <Heading title="Kelola Produk" center />
       </div>
       <div style={{ height: 600, width: "100%" }}>
         <DataGrid
