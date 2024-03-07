@@ -81,16 +81,16 @@ const CheckoutClient = () => {
           />
         </Elements>
       )}
-      {loading && <div className="text-center">Loading Checkout...</div>}
+      {loading && <div className="text-center">Loading...</div>}
       {error && (
-        <div className="text-center text-rose-500">Something went wrong...</div>
+        <div className="text-center text-rose-500">Ada Kesalahan...</div>
       )}
       {paymentSuccess && (
         <div className="flex items-center flex-col gap-4">
-          <div className="text-teal-500 text-center">Payment Success</div>
+          <div className="text-teal-500 text-center">Pembayaran Berhasil</div>
           <div className="max-w-[220px] w-full">
             <Button
-              label="View Your Orders"
+              label="Lihat Orderan"
               onClick={() => router.push("/orders")}
             />
           </div>

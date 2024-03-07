@@ -63,7 +63,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             {currentUser ? (
               <div>
                 <Link href="/orders">
-                  <MenuItem onClick={toggleOpen}>Orderan Anda</MenuItem>
+                  <MenuItem onClick={toggleOpen}>Orderan</MenuItem>
                 </Link>
                 <Link href="/admin">
                   <MenuItem onClick={toggleOpen}>Admin Dashboard</MenuItem>
@@ -75,16 +75,16 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                     signOut();
                   }}
                 >
-                  Logout
+                  Keluar
                 </MenuItem>
               </div>
             ) : (
               <div>
                 <Link href="/login">
-                  <MenuItem onClick={toggleOpen}>Login</MenuItem>
+                  <MenuItem onClick={toggleOpen}>Masuk Akun</MenuItem>
                 </Link>
                 <Link href="/register">
-                  <MenuItem onClick={toggleOpen}>Register</MenuItem>
+                  <MenuItem onClick={toggleOpen}>Daftar Akun</MenuItem>
                 </Link>
               </div>
             )}

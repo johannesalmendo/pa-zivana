@@ -55,7 +55,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
       })
       .then((result) => {
         if (!result.error) {
-          toast.success("Checkout Success");
+          toast.success("Pembayaran berhasil");
 
           handleClearCart();
           handleSetPaymentSuccess(true);
@@ -71,19 +71,19 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
       <div className="mb-6">
         <Heading title="Enter your details to complete checkout" />
       </div>
-      <h2 className="font-semibold mb-2">Address Information</h2>
+      <h2 className="font-semibold mb-2">Informasi Pengiriman</h2>
       <AddressElement
         options={{
           mode: "shipping",
         }}
       />
-      <h2 className="font-semibold mt-4 mb-2">Payment Information</h2>
+      <h2 className="font-semibold mt-4 mb-2">Informasi Pembayaran</h2>
       <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
       <div className="py-4 text-center text-slate-700 text-xl font-bold">
         Total: {formattedPrice}
       </div>
       <Button
-        label={isLoading ? "Processing" : "Pay now"}
+        label={isLoading ? "Memproses" : "Bayar"}
         disabled={isLoading || !stripe || !elements}
         onClick={() => {}}
       />

@@ -14,7 +14,7 @@ const Orders = async () => {
   const orders = await getOrdersByUserId(currentUser.id);
 
   if (!orders) {
-    return <NullData title="No orders yet..." />;
+    return <NullData title="Orderan Belum Ada" />;
   }
 
   return (

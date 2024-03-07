@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { Product } from "@prisma/client";
@@ -47,10 +48,10 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 220 },
-    { field: "name", headerName: "Nama", width: 220 },
+    { field: "name", headerName: "Nama Produk", width: 220 },
     {
       field: "price",
-      headerName: "Harga(Rp)",
+      headerName: "Harga (Rp)",
       width: 100,
       renderCell: (params) => {
         return (
@@ -62,21 +63,21 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
     { field: "brand", headerName: "Merek", width: 100 },
     {
       field: "inStock",
-      headerName: "Stok",
-      width: 120,
+      headerName: "Stok Barang",
+      width: 150,
       renderCell: (params) => {
         return (
           <div>
             {params.row.inStock === true ? (
               <Status
-                text="stok tersedia"
+                text="Stok Tersedia"
                 icon={MdDone}
                 bg="bg-teal-200"
                 color="text-teal-700"
               />
             ) : (
               <Status
-                text="stok kosong"
+                text="Stok Kosong"
                 icon={MdClose}
                 bg="bg-rose-200"
                 color="text-rose-700"
@@ -128,7 +129,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
         router.refresh();
       })
       .catch((err) => {
-        toast.error("Oops! ada sesuatu masalah");
+        toast.error("Terjadi kesalahan");
         console.log(err);
       });
   }, []);

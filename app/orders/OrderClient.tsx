@@ -34,19 +34,19 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
         customer: order.user.name,
         amount: formatPrice(order.amount / 100),
         paymentStatus: order.status,
-        date: moment(order.createDate).fromNow(),
+        date: moment(order.createDate).locale("id").format('ll'),
         deliveryStatus: order.deliveryStatus,
       };
     });
   }
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 220 },
-    { field: "customer", headerName: "Nama Pelanggan", width: 130 },
+    // { field: "id", headerName: "ID", width: 220 },
+    { field: "customer", headerName: "Nama Pelanggan", width: 160 },
     {
       field: "amount",
-      headerName: "Total(Rp)",
-      width: 130,
+      headerName: "Total (Rp)",
+      width: 160,
       renderCell: (params) => {
         return (
           <div className="font-bold text-slate-800">{params.row.amount}</div>
@@ -55,21 +55,21 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
     },
     {
       field: "paymentStatus",
-      headerName: "Pembayaran",
-      width: 130,
+      headerName: "Status Pembayaran",
+      width: 160,
       renderCell: (params) => {
         return (
           <div>
             {params.row.paymentStatus === "pending" ? (
               <Status
-                text="belum membayar"
+                text="Belum Membayar"
                 icon={MdAccessTimeFilled}
                 bg="bg-slate-200"
                 color="text-slate-700"
               />
             ) : params.row.paymentStatus === "complete" ? (
               <Status
-                text="sudah membayar"
+                text="Sudah Membayar"
                 icon={MdDone}
                 bg="bg-green-200"
                 color="text-green-700"
@@ -84,27 +84,27 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
     {
       field: "deliveryStatus",
       headerName: "Status Pengiriman",
-      width: 130,
+      width: 160,
       renderCell: (params) => {
         return (
           <div>
             {params.row.deliveryStatus === "pending" ? (
               <Status
-                text="pending"
+                text="Belum Dikirim"
                 icon={MdAccessTimeFilled}
                 bg="bg-slate-200"
                 color="text-slate-700"
               />
             ) : params.row.deliveryStatus === "dispatched" ? (
               <Status
-                text="pengiriman"
+                text="Dalam Perjalanan"
                 icon={MdDeliveryDining}
                 bg="bg-purple-200"
                 color="text-purple-700"
               />
             ) : params.row.deliveryStatus === "delivered" ? (
               <Status
-                text="terkirim"
+                text="Sampai Tujuan"
                 icon={MdDone}
                 bg="bg-green-200"
                 color="text-green-700"
@@ -118,13 +118,13 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
     },
     {
       field: "date",
-      headerName: "Waktu",
-      width: 130,
+      headerName: "Tanggal",
+      width: 250,
     },
     {
       field: "action",
-      headerName: "Lihat",
-      width: 200,
+      headerName: "",
+      width: 100,
       renderCell: (params) => {
         return (
           <div className="flex justify-between gap-4 w-full">
@@ -143,7 +143,7 @@ const OrdersClient: React.FC<OrdersClientProps> = ({ orders }) => {
   return (
     <div className="max-w-[1150px] m-auto text-xl">
       <div className="mb-4 mt-8">
-        <Heading title=" Orders" center />
+        <Heading title="Orderan" center />
       </div>
       <div style={{ height: 600, width: "100%" }}>
         <DataGrid

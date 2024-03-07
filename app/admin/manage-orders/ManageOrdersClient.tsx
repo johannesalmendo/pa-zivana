@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { Order, User } from "@prisma/client";
@@ -5,6 +6,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { formatPrice } from "@/utils/formatPrice";
 import Heading from "@/app/components/Heading";
 import Status from "@/app/components/Status";
+import StatusOrder from "@/app/components/StatusOrder";
 import {
   MdAccessTimeFilled,
   MdDeliveryDining,
@@ -37,42 +39,34 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
         customer: order.user.name,
         amount: formatPrice(order.amount / 100),
         paymentStatus: order.status,
-        date: moment(order.createDate).fromNow(),
+        date: moment(order.createDate).locale("id").format('ll'),
         deliveryStatus: order.deliveryStatus,
       };
     });
   }
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 220 },
+    { field: "id", headerName: "ID", width: 170 },
     { field: "customer", headerName: "Nama Pelanggan", width: 130 },
-    {
-      field: "amount",
-      headerName: "Jumlah(Rp)",
-      width: 130,
-      renderCell: (params) => {
+    { field: "amount", headerName: "Jumlah (Rp)", width: 130, renderCell: (params) => {
         return (
           <div className="font-bold text-slate-800">{params.row.amount}</div>
         );
       },
     },
-    {
-      field: "paymentStatus",
-      headerName: "Pembayaran",
-      width: 130,
-      renderCell: (params) => {
+    { field: "paymentStatus", headerName: "Status Pembayaran", width: 190, renderCell: (params) => {
         return (
           <div>
             {params.row.paymentStatus === "pending" ? (
               <Status
-                text="tertunda"
+                text="Belum Membayar"
                 icon={MdAccessTimeFilled}
                 bg="bg-slate-200"
                 color="text-slate-700"
               />
             ) : params.row.paymentStatus === "complete" ? (
               <Status
-                text="sudah"
+                text="Selesai Pembayaran"
                 icon={MdDone}
                 bg="bg-green-200"
                 color="text-green-700"
@@ -87,28 +81,25 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
     {
       field: "deliveryStatus",
       headerName: "Status Pengiriman",
-      width: 130,
+      width: 150,
       renderCell: (params) => {
         return (
           <div>
             {params.row.deliveryStatus === "pending" ? (
-              <Status
-                text="tertunda"
-                icon={MdAccessTimeFilled}
+              <StatusOrder
+                text="Belum Dikirim"
                 bg="bg-slate-200"
                 color="text-slate-700"
               />
             ) : params.row.deliveryStatus === "dispatched" ? (
-              <Status
-                text="pesanan dikirim"
-                icon={MdDeliveryDining}
+              <StatusOrder
+                text="Dalam Perjalanan"
                 bg="bg-purple-200"
                 color="text-purple-700"
               />
             ) : params.row.deliveryStatus === "delivered" ? (
-              <Status
-                text="pesanan terkirim"
-                icon={MdDone}
+              <StatusOrder
+                text="Sampai Tujuan"
                 bg="bg-green-200"
                 color="text-green-700"
               />
@@ -121,8 +112,8 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
     },
     {
       field: "date",
-      headerName: "Waktu",
-      width: 130,
+      headerName: "Tanggal",
+      width: 115,
     },
     {
       field: "action",

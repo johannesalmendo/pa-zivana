@@ -1,8 +1,11 @@
 import prisma from "@/libs/prismadb";
 import moment from "moment";
+import 'moment/locale/id';
 
 export default async function getGraphData() {
   try {
+    moment.locale("id");
+
     // Get the start and end dates for the data range (7 days ago to today)
     const startDate = moment().subtract(6, "days").startOf("day");
     const endDate = moment().endOf("day");

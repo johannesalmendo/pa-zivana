@@ -2,7 +2,6 @@
 
 import { Order, Product, User } from "@prisma/client";
 import { useEffect, useState } from "react";
-import Heading from "../components/Heading";
 import { formatPrice } from "@/utils/formatPrice";
 import { formatNumber } from "@/utils/formatNumber";
 
@@ -53,7 +52,7 @@ const Summary:React.FC<SummaryProps> = ({orders, products, users}) => {
 
             const totalSale = orders.reduce((acc,item) =>{
                 if(item.status === 'complete'){
-                    return acc + item.amount
+                    return acc + (item.amount / 100)
                 }else return acc
             }, 0)
 
@@ -80,7 +79,7 @@ const Summary:React.FC<SummaryProps> = ({orders, products, users}) => {
 
     return ( <div className="max-w-[1150px] m-auto">
         <div className="mb-4 mt-8">
-            <Heading title="Stats" center/>
+            {/* <Heading title="Stats" center/> */}
         </div>
         <div className="grid grid-cols-2 gap-3 max-h-50vh overflow-y-auto">
             {

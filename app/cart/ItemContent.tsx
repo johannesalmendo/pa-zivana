@@ -56,7 +56,7 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
           <div>{item.selectedImg.color}</div>
           <div className="w-[70px]">
             <button
-              className="text-slate-500 underline"
+              className="text-rose-500 underline"
               onClick={() => handleRemoveProductFromCart(item)}
             >
               Hapus

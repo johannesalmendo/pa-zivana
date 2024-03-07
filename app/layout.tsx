@@ -19,7 +19,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="id-ID">
       <body className={`${lexend.className} text-slate-700`}>
         <Toaster
           toastOptions={{

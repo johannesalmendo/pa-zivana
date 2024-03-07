@@ -63,15 +63,8 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
           })}
       </div>
       <div className="border-t-[1.5px] border-slate-200 py-4 flex justify-between gap-4">
-        <div className="w-[90px]">
-          <Button
-            label="Bersihkan keranjang"
-            onClick={() => {
-              handleClearCart();
-            }}
-            small
-            outline
-          />
+        <div className="w-[120px]">
+          <Button small outline label="Bersihkan keranjang" onClick={() => {handleClearCart();}}/>
         </div>
         <div className="text-sm flex flex-col gap-1 items-start">
           <div className="flex justify-between w-full text-base font-semibold">
