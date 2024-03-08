@@ -33,7 +33,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ currentUser }) => {
 
   useEffect(() => {
     if (currentUser) {
-      router.push("/cart");
+      router.push("/");
       router.refresh();
     }
   }, []);
@@ -47,9 +47,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ currentUser }) => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        router.push("/cart");
+        router.push("/");
         router.refresh();
-        toast.success("Logged In");
+        toast.success("Berhasil Masuk");
       }
 
       if (callback?.error) {
@@ -59,15 +59,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ currentUser }) => {
   };
 
   if (currentUser) {
-    return <p className="text-center">Logged in. Redirecting...</p>;
+    return <p className="text-center">Tunggu sebentar...</p>;
   }
 
   return (
     <>
-      <Heading title="Sign in to E~Shop" />
+      <Heading title="Masuk Akun" />
       <Button
         outline
-        label="Continue with Google"
+        label="Lanjut dengan Google"
         icon={AiOutlineGoogle}
         onClick={() => {
           signIn("google");
@@ -84,7 +84,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ currentUser }) => {
       />
       <Input
         id="password"
-        label="Password"
+        label="Kata Sandi"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -96,9 +96,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ currentUser }) => {
         onClick={handleSubmit(onSubmit)}
       />
       <p className="text-sm">
-        Do not have an account?{" "}
-        <Link className="underline" href="/register">
-          Sign Up
+        Belum punya akun?{" "}
+        <Link className="underline text-blue-700" href="/register">
+          Daftar
         </Link>
       </p>
     </>

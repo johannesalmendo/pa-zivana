@@ -35,7 +35,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
 
   useEffect(() => {
     if (currentUser) {
-      router.push("/cart");
+      router.push("/");
       router.refresh();
     }
   }, []);
@@ -46,7 +46,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
     axios
       .post("/api/register", data)
       .then(() => {
-        toast.success("Account created");
+        toast.success("Akun telah dibuat");
 
         signIn("credentials", {
           email: data.email,
@@ -54,9 +54,9 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
           redirect: false,
         }).then((callback) => {
           if (callback?.ok) {
-            router.push("/cart");
+            router.push("/");
             router.refresh();
-            toast.success("Logged In");
+            toast.success("Berhasil Masuk");
           }
 
           if (callback?.error) {
@@ -64,22 +64,22 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
           }
         });
       })
-      .catch(() => toast.error("Something went wrong"))
+      .catch(() => toast.error("Ada kesalahan"))
       .finally(() => {
         setIsLoading(false);
       });
   };
 
   if (currentUser) {
-    return <p className="text-center">Logged in. Redirecting...</p>;
+    return <p className="text-center">Tunggu Sebentar...</p>;
   }
 
   return (
     <>
-      <Heading title="Sign up for E~Shop" />
+      <Heading title="Daftar Akun" />
       <Button
         outline
-        label="Continue with Google"
+        label="Daftar dengan Google"
         icon={AiOutlineGoogle}
         onClick={() => {
           signIn("google");
@@ -88,7 +88,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
       <hr className="bg-slate-300 w-full h-px" />
       <Input
         id="name"
-        label="Name"
+        label="Nama"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -104,7 +104,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
       />
       <Input
         id="password"
-        label="Password"
+        label="Kata Sandi"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -112,13 +112,13 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
         type="password"
       />
       <Button
-        label={isLoading ? "Loading" : "Sign Up"}
+        label={isLoading ? "Loading" : "Daftar"}
         onClick={handleSubmit(onSubmit)}
       />
       <p className="text-sm">
-        Already have an account?{" "}
-        <Link className="underline" href="/login">
-          Log in
+        Sudah punya akun?{" "}
+        <Link className="underline text-blue-700" href="/login">
+          Masuk
         </Link>
       </p>
     </>
