@@ -71,9 +71,9 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
             <span>Subtotal</span>
             <span>{formatPrice(cartTotalAmount)}</span>
           </div>
-          <p className="text-slate-500">
+          {/* <p className="text-slate-500">
             Pajak dan ongkos kirim dihitung saat checkout
-          </p>
+          </p> */}
           <Button
             label={currentUser ? "Pembayaran" : "Login untuk Pembayaran"}
             outline={currentUser ? false : true}
